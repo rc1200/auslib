@@ -1,0 +1,17 @@
+
+        <customErrors mode="On" defaultRedirect="ErrorPages/Error.htm">
+	        <error statusCode="400" redirect="~/ErrorPages/400.htm" />
+	        <error statusCode="401" redirect="~/ErrorPages/401.htm" />
+	        <error statusCode="403" redirect="~/ErrorPages/403.htm" />
+	        <error statusCode="404" redirect="~/ErrorPages/404.htm" />
+	        <error statusCode="405" redirect="~/ErrorPages/405.htm" />
+	        <error statusCode="406" redirect="~/ErrorPages/406.htm" />
+	        <error statusCode="407" redirect="~/ErrorPages/407.htm" />
+	        <error statusCode="410" redirect="~/ErrorPages/410.htm" />
+	        <error statusCode="412" redirect="~/ErrorPages/412.htm" />
+	        <error statusCode="414" redirect="~/ErrorPages/414.htm" />
+	        <error statusCode="415" redirect="~/ErrorPages/415.htm" />
+	        <error statusCode="500" redirect="~/ErrorPages/500.htm" />
+	        <error statusCode="501" redirect="~/ErrorPages/501.htm" />
+	        <error statusCode="502" redirect="~/ErrorPages/502.htm" />
+        </customErrors>

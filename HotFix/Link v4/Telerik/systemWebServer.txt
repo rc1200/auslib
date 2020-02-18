@@ -1,0 +1,15 @@
+
+        <rewrite>
+            <rules>
+                <rule name="DisableDialogHandler" enabled="true" stopProcessing="true">
+                  <match url="^Telerik.Web.UI.DialogHandler.*?$" />
+                  <action type="Redirect" url="/ErrorPages/403.htm" redirectType="Permanent" />
+                </rule>
+                <rule name="DisableRadEditorProvider" enabled="true" stopProcessing="true">
+                  <match url="^DesktopModules/Admin/RadEditorProvider/(.*)" />
+                  <action type="Redirect" url="/ErrorPages/403.htm" appendQueryString="false" redirectType="Permanent" />
+                </rule>
+            </rules>
+        </rewrite>
+
+  </system.webServer>

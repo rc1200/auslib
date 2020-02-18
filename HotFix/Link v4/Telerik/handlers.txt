@@ -1,0 +1,2 @@
+      <remove name="Telerik_Web_UI_DialogHandler_aspx" />
+    </handlers>
