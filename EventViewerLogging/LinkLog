@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--This file contains custom application settings specific to the Advanced REST Web Api-->
+<configuration>
+  <!-- to turn off the logging add the "globalThreshold" attribute and set the value to "Off" 
+	   to turn on the logging remove the "globalThreshold" attribute and the value -->
+  <nlog throwExceptions="true" autoReload="true">
+	<targets>
+	  <target name="webapilog"
+			  type="File"
+			  fileName="${basedir}/log/current.log"
+			  archiveFileName="${basedir}/log/archive.{#}.log"
+			  archiveEvery="Day"
+			  archiveNumbering="Date"
+			  archiveDateFormat="yyyyMMdd"
+			  maxArchiveFiles="30"
+			  concurrentWrites="true"
+			  keepFileOpen="false">
+		<layout type="CSVLayout">
+		  <withHeader>True</withHeader>
+		  <delimiter>Tab</delimiter>
+		  <column name="datetime" layout="${longdate}" />
+		  <column name="message" layout="${message}" />
+		  <column name="user" layout="${event-properties:User}" />
+		  <column name="userip" layout="${event-properties:UserIp}" />
+		  <column name="urlendpoint" layout="${event-properties:UrlEndpoint}" />
+		  <column name="headers" layout="${event-properties:Headers}" />
+		  <column name="body" layout="${event-properties:Body}" />
+		  <column name="status" layout="${event-properties:Status}" />
+		  <column name="elapsedtime" layout="${event-properties:ElapsedTime}" />
+		</layout>
+	  </target>
+	</targets>
+
+	<!--for logging rules see rules below -->
+	<rules>
+	  <!--REST request/response log (set level to "Debug" for all 2xx response code and "Error" for all non 2xx response code, or a combination of "Debug, Error")-->
+	  <!-- 
+	  Sample Logger Rules
+	  <logger name="WebApiLog" minLevel="Debug" writeTo="webapilog" />                  // this will log level from Debug, Info, Warn, Error, Fatal
+	  <logger name="WebApiLog" minLevel="Debug" maxLevel="Warn" writeTo="webapilog" />  // this will log level from Debug, Info, Warn
+	  <logger name="WebApiLog" minLevel="Debug" maxLevel="Error" writeTo="webapilog" /> // this will log level from Debug, Info, Warn, Error
+	  <logger name="WebApiLog" levels="Debug" writeTo="webapilog" />                    // this will log level Debug only
+	  <logger name="WebApiLog" levels="Debug, Error" writeTo="webapilog" />             // this will log level Debug and Error only
+	  -->
+	  <logger name="WebApiLog" levels="Debug, Error" writeTo="webapilog" />
+	</rules>
+  </nlog>
+  <appSettings>
